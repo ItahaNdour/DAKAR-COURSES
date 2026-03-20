@@ -1,22 +1,22 @@
-<!-- /index.html -->
+<!-- /index.html (V4 compact mobile) -->
 <!doctype html>
 <html lang="fr">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-    <title>Mbao Express — Courses à domicile à Dakar</title>
+    <title>Dakar Courses — Courses à domicile à Dakar</title>
     <meta
       name="description"
-      content="On fait vos courses à Dakar et alentours. Rapide. Fiable. À domicile. Commande via WhatsApp. Basé à Mbao, déplacements possibles selon demande."
+      content="On fait vos courses à Dakar et alentours. Rapide. Fiable. À domicile. Paiement facile avec Wave et Orange Money. Commande via WhatsApp."
     />
     <meta name="robots" content="index,follow" />
     <meta name="theme-color" content="#1FA65A" />
 
-    <meta property="og:title" content="Mbao Express — Courses à domicile à Dakar" />
+    <meta property="og:title" content="Dakar Courses — Courses à domicile à Dakar" />
     <meta
       property="og:description"
-      content="On fait vos courses à Dakar et alentours. Rapide. Fiable. À domicile. Réponse rapide sur WhatsApp ⚡"
+      content="Rapide. Fiable. À domicile. Paiement facile avec Wave et Orange Money. Réponse rapide sur WhatsApp ⚡"
     />
     <meta property="og:type" content="website" />
 
@@ -31,13 +31,25 @@
       :root {
         --green: #1fa65a;
         --green-dark: #0e6b3a;
-        --cream: #f7f5ef;
         --anthracite: #1f2937;
         --gray: #6b7280;
         --white: #ffffff;
-        --shadow: 0 16px 40px rgba(17, 24, 39, 0.08);
-        --radius: 20px;
+        --line: rgba(31, 41, 55, 0.10);
+        --shadow: 0 10px 24px rgba(17, 24, 39, 0.07);
+        --radius: 16px;
         --max: 1080px;
+
+        /* Mobile scale targets */
+        --h1: 34px;   /* <= 36px */
+        --h2: 24px;   /* <= 28px */
+        --p: 16px;    /* 16–18px */
+        --small: 14px;/* 14–15px */
+        --lh: 1.35;
+        --sectionY: 34px; /* <= 48px */
+        --gap: 12px;      /* 12–16px */
+        --cardPad: 14px;  /* 16–18px (we keep 14–16 to be tighter) */
+        --btnPadY: 10px;
+        --btnPadX: 14px;
       }
 
       * { box-sizing: border-box; }
@@ -46,7 +58,7 @@
         font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
         color: var(--anthracite);
         background: var(--white);
-        line-height: 1.5;
+        line-height: var(--lh);
       }
       a { color: inherit; text-decoration: none; }
       img { max-width: 100%; height: auto; display: block; }
@@ -54,24 +66,24 @@
       .container {
         width: min(100%, var(--max));
         margin: 0 auto;
-        padding: 0 18px;
+        padding: 0 16px;
       }
 
+      /* Header (compact) */
       .topbar {
         position: sticky;
         top: 0;
         z-index: 50;
-        background: rgba(255, 255, 255, 0.92);
+        background: rgba(255, 255, 255, 0.94);
         backdrop-filter: blur(10px);
-        border-bottom: 1px solid rgba(31, 41, 55, 0.06);
+        border-bottom: 1px solid var(--line);
       }
-
       .topbar-inner {
+        height: 64px; /* target 64–72px */
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 14px 0;
-        gap: 14px;
+        gap: 10px;
       }
 
       .brand {
@@ -80,32 +92,31 @@
         gap: 10px;
         min-width: 0;
       }
-
       .logo {
-        width: 40px;
-        height: 40px;
+        width: 34px;
+        height: 34px;
         border-radius: 12px;
-        background: linear-gradient(180deg, rgba(31, 166, 90, 0.12), rgba(14, 107, 58, 0.08));
+        background: rgba(31, 166, 90, 0.10);
+        border: 1px solid rgba(31, 166, 90, 0.18);
         display: grid;
         place-items: center;
-        border: 1px solid rgba(31, 166, 90, 0.18);
+        flex: 0 0 auto;
       }
+      .logo svg { width: 18px; height: 18px; }
 
-      .logo svg { width: 22px; height: 22px; }
-
+      .brand-text { min-width: 0; }
       .brand-title {
         font-family: Poppins, Inter, sans-serif;
-        font-weight: 800;
-        letter-spacing: -0.02em;
-        font-size: 15px;
+        font-weight: 900;
+        font-size: 14px;
         margin: 0;
-        line-height: 1.1;
+        line-height: 1.05;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
       }
-
       .brand-sub {
+        display: none; /* hide tagline on mobile sticky */
         margin: 2px 0 0 0;
         font-size: 12px;
         color: var(--gray);
@@ -114,12 +125,7 @@
         text-overflow: ellipsis;
       }
 
-      .nav {
-        display: none;
-        gap: 10px;
-        align-items: center;
-      }
-
+      .nav { display: none; gap: 10px; align-items: center; }
       .nav a {
         font-size: 13px;
         color: var(--gray);
@@ -132,13 +138,14 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        gap: 10px;
+        gap: 8px;
         border: 0;
         cursor: pointer;
         border-radius: 999px;
-        padding: 12px 16px;
-        font-weight: 800;
-        transition: transform 0.08s ease, background 0.15s ease, box-shadow 0.15s ease;
+        padding: var(--btnPadY) var(--btnPadX);
+        font-weight: 900;
+        font-size: 14px;
+        transition: background 0.15s ease, transform 0.08s ease;
         user-select: none;
         white-space: nowrap;
       }
@@ -147,7 +154,7 @@
       .btn-primary {
         background: var(--green);
         color: var(--white);
-        box-shadow: 0 12px 26px rgba(31, 166, 90, 0.22);
+        box-shadow: 0 10px 18px rgba(31, 166, 90, 0.18);
       }
       .btn-primary:hover { background: var(--green-dark); }
 
@@ -157,313 +164,297 @@
       }
       .btn-ghost:hover { background: rgba(31, 166, 90, 0.14); }
 
-      .section { padding: 54px 0; }
-      .section.alt { background: var(--cream); }
-
-      .hero {
-        padding: 54px 0 40px;
-        background:
-          radial-gradient(900px 450px at 20% 10%, rgba(31, 166, 90, 0.12), transparent 60%),
-          radial-gradient(750px 400px at 85% 30%, rgba(14, 107, 58, 0.10), transparent 55%),
-          linear-gradient(180deg, rgba(247, 245, 239, 0.80), rgba(255, 255, 255, 1));
-      }
-
-      .hero-grid {
-        display: grid;
-        gap: 18px;
-        align-items: start;
-      }
-
-      h1 {
-        font-family: Poppins, Inter, sans-serif;
-        font-size: 34px;
-        line-height: 1.05;
-        letter-spacing: -0.03em;
-        margin: 0;
-      }
-
-      .subtitle {
-        margin: 12px 0 0 0;
-        font-size: 18px;
-        font-weight: 800;
-        color: var(--anthracite);
-        letter-spacing: -0.01em;
-      }
-
-      .micro {
-        margin: 10px 0 0 0;
-        color: var(--gray);
+      .link {
+        font-weight: 900;
         font-size: 14px;
-        font-weight: 600;
+        color: var(--green-dark);
+        text-decoration: underline;
+        text-underline-offset: 3px;
       }
 
-      .hero-cta {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-top: 18px;
-      }
-
+      /* Layout */
+      .section { padding: var(--sectionY) 0; }
       .card {
         background: var(--white);
-        border: 1px solid rgba(31, 41, 55, 0.06);
+        border: 1px solid var(--line);
         border-radius: var(--radius);
         box-shadow: var(--shadow);
       }
 
-      .hero-card { padding: 18px; }
-
-      .chip-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-top: 16px;
-      }
-
-      .chip {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 10px 12px;
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.7);
-        border: 1px solid rgba(31, 41, 55, 0.06);
-        color: var(--anthracite);
-        font-size: 13px;
-        font-weight: 700;
-      }
-
-      h2 {
-        font-family: Poppins, Inter, sans-serif;
-        font-size: 22px;
-        margin: 0;
-        letter-spacing: -0.02em;
-      }
-
       .section-head {
         display: grid;
-        gap: 10px;
-        margin-bottom: 18px;
-      }
-
-      .section-head p {
-        margin: 0;
-        color: var(--gray);
-        font-size: 14px;
-        max-width: 70ch;
-      }
-
-      .grid-4 {
-        display: grid;
-        gap: 14px;
-      }
-
-      .svc {
-        padding: 18px;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-      }
-
-      .svc .emoji {
-        width: 46px;
-        height: 46px;
-        border-radius: 16px;
-        display: grid;
-        place-items: center;
-        background: rgba(31, 166, 90, 0.10);
-        border: 1px solid rgba(31, 166, 90, 0.16);
-        font-size: 22px;
-      }
-
-      .svc .title {
-        margin: 0;
-        font-family: Poppins, Inter, sans-serif;
-        font-weight: 800;
-        font-size: 16px;
-        line-height: 1.1;
-      }
-
-      .svc .line {
-        margin: 6px 0 0 0;
-        color: var(--gray);
-        font-size: 13px;
-        font-weight: 600;
-      }
-
-      .how {
-        display: grid;
-        gap: 14px;
-      }
-
-      .how-item {
-        padding: 18px;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-      }
-
-      .how-item .emoji {
-        width: 46px;
-        height: 46px;
-        border-radius: 16px;
-        display: grid;
-        place-items: center;
-        background: rgba(31, 166, 90, 0.10);
-        border: 1px solid rgba(31, 166, 90, 0.16);
-        font-size: 22px;
-      }
-
-      .how-item .txt {
-        font-family: Poppins, Inter, sans-serif;
-        font-weight: 900;
-        font-size: 18px;
-        letter-spacing: -0.01em;
-      }
-
-      .pricing {
-        display: grid;
-        gap: 14px;
-      }
-
-      .price-card {
-        padding: 18px;
-        display: grid;
         gap: 8px;
+        margin-bottom: 14px; /* less space */
       }
 
-      .price-big {
+      h1 {
         font-family: Poppins, Inter, sans-serif;
-        font-weight: 900;
-        font-size: 34px;
+        font-size: var(--h1);
+        line-height: 1.02;
         letter-spacing: -0.03em;
         margin: 0;
       }
-
-      .price-label {
+      h2 {
+        font-family: Poppins, Inter, sans-serif;
+        font-size: var(--h2);
+        line-height: 1.1;
+        letter-spacing: -0.02em;
         margin: 0;
-        font-size: 14px;
-        font-weight: 800;
-        color: var(--gray);
       }
+      p {
+        margin: 0;
+        font-size: var(--p);
+      }
+      .small { font-size: var(--small); color: var(--gray); font-weight: 800; }
 
-      .why {
+      /* Hero (dense) */
+      .hero { padding: 28px 0 20px; }
+      .subtitle {
+        margin-top: 8px;
+        font-weight: 900;
+        font-size: 17px;
+      }
+      .hero-cta {
         display: grid;
-        gap: 12px;
+        gap: 10px;
+        margin-top: 14px;
+      }
+      .hero-cta .secondary-row {
+        display: flex;
+        justify-content: flex-start;
+        gap: 10px;
+        align-items: center;
+      }
+      .chips {
+        margin-top: 12px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .chip {
+        font-size: 13px;
+        font-weight: 900;
+        padding: 8px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(31, 41, 55, 0.03);
       }
 
-      .why-row {
-        display: grid;
-        gap: 12px;
-      }
-
-      .why-pill {
-        padding: 16px;
+      /* Services (short cards) */
+      .grid-2 { display: grid; gap: var(--gap); }
+      .svc {
+        padding: var(--cardPad);
         display: flex;
         align-items: center;
-        gap: 12px;
-        font-weight: 900;
-        font-size: 16px;
+        gap: 10px;
       }
-
-      .why-pill .emoji {
-        width: 42px;
-        height: 42px;
+      .ico {
+        width: 40px; /* <= 48px */
+        height: 40px;
         border-radius: 14px;
         display: grid;
         place-items: center;
         background: rgba(31, 166, 90, 0.10);
         border: 1px solid rgba(31, 166, 90, 0.16);
-        font-size: 20px;
+        font-size: 18px;
+        flex: 0 0 auto;
+      }
+      .svc-title {
+        font-family: Poppins, Inter, sans-serif;
+        font-weight: 900;
+        font-size: 15px;
+        line-height: 1.1;
+        margin: 0;
+      }
+      .svc-line {
+        margin-top: 4px;
+        font-size: 13px;
+        font-weight: 800;
+        color: var(--gray);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 22ch;
       }
 
-      .zone {
-        padding: 18px;
+      /* How: compact list (no big cards) */
+      .how-list {
+        display: grid;
+        gap: 10px;
+        margin-top: 6px;
+      }
+      .how-item {
+        padding: 12px 14px;
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        background: rgba(31, 41, 55, 0.02);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 900;
+      }
+      .how-item span:first-child { font-size: 18px; }
+
+      /* Payment compact */
+      .pay {
+        margin-top: 14px;
+        padding: var(--cardPad);
+      }
+      .pay-title {
+        font-family: Poppins, Inter, sans-serif;
+        font-weight: 900;
+        font-size: 15px;
+        margin: 0 0 10px 0;
+        letter-spacing: -0.01em;
+      }
+      .pay-grid {
         display: grid;
         gap: 10px;
       }
+      .pay-pill {
+        padding: 12px 12px;
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        background: rgba(31, 41, 55, 0.02);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 900;
+        font-size: 14px;
+      }
+      .pay-pill .pico {
+        width: 34px;
+        height: 34px;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        border: 1px solid var(--line);
+        background: rgba(255,255,255,0.7);
+      }
+      .pay-note {
+        margin-top: 10px;
+        font-size: 13px;
+        font-weight: 900;
+        color: var(--gray);
+      }
+      .pay-bonus {
+        margin-top: 6px;
+        font-size: 13px;
+        font-weight: 900;
+        color: var(--gray);
+      }
 
-      .zone .big {
+      /* Pricing compact */
+      .pricing { display: grid; gap: var(--gap); }
+      .price-row {
+        padding: var(--cardPad);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      .price-left { display: flex; align-items: center; gap: 10px; min-width: 0; }
+      .price-tag {
+        width: 40px;
+        height: 40px;
+        border-radius: 14px;
+        display: grid;
+        place-items: center;
+        background: rgba(31, 166, 90, 0.10);
+        border: 1px solid rgba(31, 166, 90, 0.16);
+        font-size: 18px;
+        flex: 0 0 auto;
+      }
+      .price-name {
+        font-weight: 900;
+        font-size: 14px;
+        color: var(--gray);
+        margin-top: 2px;
+      }
+      .price-big {
         font-family: Poppins, Inter, sans-serif;
         font-weight: 900;
-        font-size: 20px;
+        font-size: 22px;
         letter-spacing: -0.02em;
-        margin: 0;
+        white-space: nowrap;
       }
 
-      .zone .small {
-        margin: 0;
-        color: var(--gray);
-        font-size: 14px;
-        font-weight: 700;
+      /* Why compact */
+      .why { display: grid; gap: 10px; }
+      .why-pill {
+        padding: 12px 14px;
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        background: rgba(31, 41, 55, 0.02);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 900;
       }
 
-      .about {
+      /* Zone + Trust */
+      .zone { padding: var(--cardPad); display: grid; gap: 8px; }
+      .zone .big { font-family: Poppins, Inter, sans-serif; font-weight: 900; font-size: 16px; margin: 0; }
+
+      .trust {
         display: grid;
-        gap: 14px;
-        align-items: start;
+        gap: var(--gap);
       }
 
       .photo {
-        border-radius: var(--radius);
-        overflow: hidden;
-        border: 1px solid rgba(31, 41, 55, 0.06);
-        background: rgba(31, 41, 55, 0.03);
+        padding: 12px;
+        display: grid;
+        place-items: center;
       }
-
-      .photo img {
+      .photo-box {
+        width: 100%;
+        max-width: 340px;
+        aspect-ratio: 4 / 5; /* fixed ratio */
+        border-radius: 16px;
+        border: 1px solid var(--line);
+        background: rgba(31, 41, 55, 0.02);
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+      }
+      .photo-box img { width: 100%; height: 100%; object-fit: contain; }
+      .photo-fallback {
+        display: none;
         width: 100%;
         height: 100%;
-        object-fit: cover;
-      }
-
-      .about-card { padding: 18px; }
-
-      .about-card .big {
+        place-items: center;
         font-family: Poppins, Inter, sans-serif;
         font-weight: 900;
-        font-size: 20px;
-        margin: 0;
-        letter-spacing: -0.02em;
+        color: var(--gray);
       }
 
+      .trust-card { padding: var(--cardPad); }
+
+      /* Footer */
       .footer {
-        padding: 30px 0 90px;
-        border-top: 1px solid rgba(31, 41, 55, 0.06);
-        background: linear-gradient(180deg, rgba(247, 245, 239, 0.75), rgba(255, 255, 255, 1));
+        padding: 24px 0 84px;
+        border-top: 1px solid var(--line);
       }
+      .footer small { color: var(--gray); font-weight: 900; }
 
-      .footer-grid { display: grid; gap: 14px; }
-
-      .footer small { color: var(--gray); font-weight: 700; }
-
-      .footer .cta-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-top: 10px;
-      }
-
+      /* Floating WhatsApp (small) */
       .wa-float {
         position: fixed;
-        right: 16px;
-        bottom: 16px;
+        right: 14px;
+        bottom: 14px;
         z-index: 60;
       }
-
       .wa-float a {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        padding: 12px 14px;
+        width: 56px;   /* target 56–64 */
+        height: 56px;
         border-radius: 999px;
+        display: grid;
+        place-items: center;
         background: var(--green);
         color: var(--white);
-        font-weight: 900;
-        box-shadow: 0 16px 34px rgba(31, 166, 90, 0.25);
-        border: 1px solid rgba(255, 255, 255, 0.16);
+        box-shadow: 0 14px 28px rgba(31, 166, 90, 0.25);
+        border: 1px solid rgba(255,255,255,0.18);
       }
-
       .wa-float a:hover { background: var(--green-dark); }
 
       .sr-only {
@@ -478,16 +469,25 @@
         border: 0;
       }
 
+      /* Desktop enhancements (only add, don't inflate mobile) */
       @media (min-width: 860px) {
+        :root {
+          --h1: 48px;
+          --h2: 28px;
+          --sectionY: 44px;
+          --cardPad: 16px;
+        }
+        .brand-sub { display: block; }
         .nav { display: flex; }
-        .hero-grid { grid-template-columns: 1.15fr 0.85fr; gap: 22px; align-items: center; }
-        h1 { font-size: 52px; }
-        .grid-4 { grid-template-columns: repeat(4, 1fr); }
-        .how { grid-template-columns: repeat(3, 1fr); }
+        .hero-cta { display: flex; align-items: center; }
+        .hero-cta .secondary-row { margin-left: 10px; }
+        .grid-2 { grid-template-columns: repeat(2, 1fr); }
+        .pay-grid { grid-template-columns: repeat(3, 1fr); }
+        .trust { grid-template-columns: 0.9fr 1.1fr; align-items: start; }
         .pricing { grid-template-columns: repeat(3, 1fr); }
-        .why-row { grid-template-columns: repeat(4, 1fr); }
-        .about { grid-template-columns: 0.9fr 1.1fr; }
-        .footer-grid { grid-template-columns: 1.2fr 0.8fr; align-items: center; }
+        .pricing .price-row { justify-content: flex-start; }
+        .pricing .price-big { margin-left: auto; }
+        .why { grid-template-columns: repeat(4, 1fr); }
       }
     </style>
   </head>
@@ -496,55 +496,37 @@
     <header class="topbar">
       <div class="container">
         <div class="topbar-inner">
-          <div class="brand" aria-label="Mbao Express">
+          <div class="brand">
             <div class="logo" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none">
                 <path
                   d="M12 22s7-4.5 7-12a7 7 0 10-14 0c0 7.5 7 12 7 12z"
                   stroke="currentColor"
-                  stroke-width="1.8"
+                  stroke-width="1.9"
                   style="color: var(--green-dark)"
                 />
                 <path
                   d="M9 11.5h6l-.6 6H9.6l-.6-6z"
                   stroke="currentColor"
-                  stroke-width="1.6"
-                  style="color: var(--green-dark)"
-                />
-                <path
-                  d="M10.2 11.5c0-1 .8-1.8 1.8-1.8s1.8.8 1.8 1.8"
-                  stroke="currentColor"
-                  stroke-width="1.6"
+                  stroke-width="1.7"
                   style="color: var(--green-dark)"
                 />
               </svg>
             </div>
-            <div>
-              <p class="brand-title">Mbao Express</p>
+            <div class="brand-text">
+              <p class="brand-title">Dakar Courses</p>
               <p class="brand-sub">Vos courses, sans vous déplacer.</p>
             </div>
           </div>
 
           <nav class="nav" aria-label="Navigation">
             <a href="#services">Services</a>
-            <a href="#how">Comment ça marche</a>
+            <a href="#how">Comment</a>
             <a href="#tarifs">Tarifs</a>
             <a href="#zone">Zone</a>
           </nav>
 
-          <a class="btn btn-primary wa-link" data-wa="commander" href="#">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path
-                d="M20.5 11.8a8.5 8.5 0 10-16.2 3.6L3 21l5.8-1.2a8.5 8.5 0 0011.7-8z"
-                stroke="white"
-                stroke-width="1.7"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M9.2 8.8c.2-.5.4-.5.6-.5h.5c.2 0 .4 0 .6.4l.7 1.7c.1.3.1.5 0 .7l-.4.5c-.1.1-.2.3-.1.5.1.2.6 1.1 1.4 1.7.9.7 1.6.9 1.9 1 .2.1.4 0 .5-.1l.6-.7c.2-.2.4-.2.6-.1l1.7.8c.3.1.4.3.4.5 0 .2-.2 1-.7 1.4-.5.4-1.2.5-1.6.4-.4-.1-1.8-.7-3.1-1.8-1.3-1.1-2.2-2.6-2.4-3-.2-.4-.6-1.3-.6-2 0-.7.3-1.1.5-1.3z"
-                fill="white"
-              />
-            </svg>
+          <a class="btn btn-primary wa-link" data-wa="commander" href="#" aria-label="Ouvrir WhatsApp">
             WhatsApp
           </a>
         </div>
@@ -554,37 +536,22 @@
     <!-- HERO -->
     <section class="hero" id="top">
       <div class="container">
-        <div class="hero-grid">
-          <div>
-            <h1>On fait vos courses à Dakar</h1>
-            <p class="subtitle">Rapide. Fiable. À domicile.</p>
+        <h1>On fait vos courses à Dakar</h1>
+        <p class="subtitle">Rapide. Fiable. À domicile.</p>
 
-            <div class="hero-cta">
-              <a class="btn btn-primary wa-link" data-wa="commander" href="#">Commander sur WhatsApp</a>
-              <a class="btn btn-ghost wa-link" data-wa="tarif" href="#">Demander un tarif</a>
-            </div>
-
-            <p class="micro">Réponse rapide sur WhatsApp ⚡</p>
-
-            <div class="chip-row" aria-label="Infos clés">
-              <span class="chip">📍 Dakar et alentours</span>
-              <span class="chip">🕗 Lun–Sam • 8h–20h</span>
-              <span class="chip">✅ Service sérieux</span>
-            </div>
+        <div class="hero-cta">
+          <a class="btn btn-primary wa-link" data-wa="commander" href="#">Commander sur WhatsApp</a>
+          <div class="secondary-row">
+            <a class="link wa-link" data-wa="tarif" href="#">Demander un tarif</a>
           </div>
+        </div>
 
-          <aside class="card hero-card" aria-label="Raccourcis WhatsApp">
-            <p style="margin:0; font-family:Poppins, Inter, sans-serif; font-weight:900; font-size:18px; letter-spacing:-0.02em;">
-              Besoin maintenant ?
-            </p>
-            <p style="margin:10px 0 0 0; color:var(--gray); font-weight:700;">
-              Envoie ta demande et on s’occupe du reste.
-            </p>
-            <div style="margin-top:14px; display:flex; flex-wrap:wrap; gap:10px;">
-              <a class="btn btn-primary wa-link" data-wa="depannage" href="#" style="width:100%;">⚡ Dépannage</a>
-              <a class="btn btn-ghost wa-link" data-wa="dakar" href="#" style="width:100%;">🚗 Course à Dakar</a>
-            </div>
-          </aside>
+        <p class="small" style="margin-top:10px;">Réponse rapide sur WhatsApp ⚡</p>
+
+        <!-- 2 badges max (mobile) -->
+        <div class="chips" aria-label="Infos clés">
+          <span class="chip">📍 Dakar et alentours</span>
+          <span class="chip">🕗 Lun–Sam • 8h–20h</span>
         </div>
       </div>
     </section>
@@ -594,74 +561,76 @@
       <div class="container">
         <div class="section-head">
           <h2>Services</h2>
-          <p>4 services, simples, clairs.</p>
+          <p class="small">Court, clair.</p>
         </div>
 
-        <div class="grid-4">
+        <div class="grid-2">
           <div class="card svc">
-            <div class="emoji" aria-hidden="true">🧺</div>
+            <div class="ico" aria-hidden="true">🧺</div>
             <div>
-              <p class="title">Courses</p>
-              <p class="line">Achats du quotidien</p>
+              <p class="svc-title">Courses</p>
+              <p class="svc-line">quotidien</p>
             </div>
           </div>
 
           <div class="card svc">
-            <div class="emoji" aria-hidden="true">⚡</div>
+            <div class="ico" aria-hidden="true">⚡</div>
             <div>
-              <p class="title">Dépannage</p>
-              <p class="line">Petits oublis urgents</p>
+              <p class="svc-title">Dépannage</p>
+              <p class="svc-line">urgent</p>
             </div>
           </div>
 
           <div class="card svc">
-            <div class="emoji" aria-hidden="true">🛒</div>
+            <div class="ico" aria-hidden="true">🛒</div>
             <div>
-              <p class="title">Achats</p>
-              <p class="line">Produits utiles</p>
+              <p class="svc-title">Achats</p>
+              <p class="svc-line">utiles</p>
             </div>
           </div>
 
           <div class="card svc">
-            <div class="emoji" aria-hidden="true">🚗</div>
+            <div class="ico" aria-hidden="true">🚗</div>
             <div>
-              <p class="title">Courses à Dakar</p>
-              <p class="line">Sur demande</p>
+              <p class="svc-title">Dakar</p>
+              <p class="svc-line">sur demande</p>
             </div>
           </div>
         </div>
 
-        <div style="margin-top: 18px; display:flex; flex-wrap:wrap; gap:10px;">
+        <div style="margin-top: 14px;">
           <a class="btn btn-primary wa-link" data-wa="commander" href="#">Commander sur WhatsApp</a>
-          <a class="btn btn-ghost wa-link" data-wa="tarif" href="#">Demander un tarif</a>
         </div>
       </div>
     </section>
 
-    <!-- COMMENT ÇA MARCHE -->
-    <section class="section alt" id="how">
+    <!-- COMMENT -->
+    <section class="section" id="how">
       <div class="container">
         <div class="section-head">
           <h2>Comment ça marche</h2>
-          <p>Simple.</p>
+          <p class="small">Éclair.</p>
         </div>
 
-        <div class="how">
-          <div class="card how-item">
-            <div class="emoji" aria-hidden="true">📩</div>
-            <div class="txt">Tu envoies</div>
-          </div>
-          <div class="card how-item">
-            <div class="emoji" aria-hidden="true">🛒</div>
-            <div class="txt">On achète</div>
-          </div>
-          <div class="card how-item">
-            <div class="emoji" aria-hidden="true">🚚</div>
-            <div class="txt">On livre</div>
-          </div>
+        <div class="how-list">
+          <div class="how-item"><span aria-hidden="true">📩</span> Tu envoies</div>
+          <div class="how-item"><span aria-hidden="true">🛒</span> On achète</div>
+          <div class="how-item"><span aria-hidden="true">🚚</span> On livre</div>
         </div>
 
-        <div style="margin-top: 18px;">
+        <!-- Paiement #1 -->
+        <div class="card pay" style="margin-top: 14px;">
+          <p class="pay-title">Paiement facile avec Wave et Orange Money</p>
+          <div class="pay-grid">
+            <div class="pay-pill"><div class="pico" aria-hidden="true">📱</div> Wave</div>
+            <div class="pay-pill"><div class="pico" aria-hidden="true">📱</div> Orange Money</div>
+            <div class="pay-pill"><div class="pico" aria-hidden="true">💵</div> Espèces à la livraison</div>
+          </div>
+          <p class="pay-note">⚡ Paiement rapide après la course</p>
+          <p class="pay-bonus">Pas besoin de vous déplacer ni de chercher de monnaie</p>
+        </div>
+
+        <div style="margin-top: 14px;">
           <a class="btn btn-primary wa-link" data-wa="commander" href="#">Commander sur WhatsApp</a>
         </div>
       </div>
@@ -672,47 +641,64 @@
       <div class="container">
         <div class="section-head">
           <h2>Tarifs</h2>
-          <p>Rapide, lisible.</p>
+          <p class="small">Lisible.</p>
         </div>
 
         <div class="pricing">
-          <div class="card price-card">
-            <p class="price-big">⚡ 500F</p>
-            <p class="price-label">Dépannage</p>
+          <div class="card price-row">
+            <div class="price-left">
+              <div class="price-tag" aria-hidden="true">⚡</div>
+              <div>
+                <div class="price-name">Dépannage</div>
+              </div>
+            </div>
+            <div class="price-big">500F</div>
           </div>
-          <div class="card price-card">
-            <p class="price-big">🧺 1000F</p>
-            <p class="price-label">Courses</p>
+
+          <div class="card price-row">
+            <div class="price-left">
+              <div class="price-tag" aria-hidden="true">🧺</div>
+              <div>
+                <div class="price-name">Courses</div>
+              </div>
+            </div>
+            <div class="price-big">1000F</div>
           </div>
-          <div class="card price-card">
-            <p class="price-big">🚗 Dakar</p>
-            <p class="price-label">Sur demande</p>
+
+          <div class="card price-row">
+            <div class="price-left">
+              <div class="price-tag" aria-hidden="true">🚗</div>
+              <div>
+                <div class="price-name">Dakar</div>
+              </div>
+            </div>
+            <div class="price-big">Sur demande</div>
           </div>
         </div>
 
-        <div style="margin-top: 18px; display:flex; flex-wrap:wrap; gap:10px;">
-          <a class="btn btn-primary wa-link" data-wa="tarif" href="#">Demander un tarif</a>
-          <a class="btn btn-ghost wa-link" data-wa="commander" href="#">Commander</a>
+        <div style="margin-top: 14px; display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+          <a class="btn btn-primary wa-link" data-wa="commander" href="#">Commander</a>
+          <a class="link wa-link" data-wa="tarif" href="#">Demander un tarif</a>
         </div>
       </div>
     </section>
 
     <!-- POURQUOI -->
-    <section class="section alt" id="why">
+    <section class="section" id="why">
       <div class="container">
         <div class="section-head">
           <h2>Pourquoi nous choisir</h2>
-          <p>Sans bla-bla.</p>
+          <p class="small">Sans phrases.</p>
         </div>
 
-        <div class="why-row">
-          <div class="card why-pill"><div class="emoji" aria-hidden="true">⚡</div>Rapide</div>
-          <div class="card why-pill"><div class="emoji" aria-hidden="true">🤝</div>Fiable</div>
-          <div class="card why-pill"><div class="emoji" aria-hidden="true">📍</div>Disponible</div>
-          <div class="card why-pill"><div class="emoji" aria-hidden="true">💬</div>Simple</div>
+        <div class="why">
+          <div class="why-pill"><span aria-hidden="true">⚡</span> Rapide</div>
+          <div class="why-pill"><span aria-hidden="true">🤝</span> Fiable</div>
+          <div class="why-pill"><span aria-hidden="true">📍</span> Disponible</div>
+          <div class="why-pill"><span aria-hidden="true">💬</span> Simple</div>
         </div>
 
-        <div style="margin-top: 18px;">
+        <div style="margin-top: 14px;">
           <a class="btn btn-primary wa-link" data-wa="commander" href="#">Commander sur WhatsApp</a>
         </div>
       </div>
@@ -723,57 +709,53 @@
       <div class="container">
         <div class="section-head">
           <h2>Zone desservie</h2>
-          <p>Très important.</p>
+          <p class="small">Très important.</p>
         </div>
 
         <div class="card zone">
           <p class="big">👉 Dakar et alentours</p>
           <p class="small">Basé à Mbao, déplacements possibles selon demande.</p>
 
-          <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top: 8px;">
+          <div style="margin-top: 10px;">
             <a class="btn btn-primary wa-link" data-wa="commander" href="#">Commander sur WhatsApp</a>
-            <a class="btn btn-ghost wa-link" data-wa="dakar" href="#">Course à Dakar</a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- CONFIANCE -->
-    <section class="section alt" id="apropos">
+    <section class="section" id="trust">
       <div class="container">
         <div class="section-head">
           <h2>Confiance</h2>
-          <p>Photo + message court.</p>
+          <p class="small">Service sérieux et fiable.</p>
         </div>
 
-        <div class="about">
-          <div class="photo" aria-label="Photo du prestataire">
-            <picture>
-              <source srcset="assets/Thierry.png" type="image/webp" />
+        <div class="trust">
+          <div class="card photo">
+            <div class="photo-box">
               <img
-                src="assets/prestataire-720.jpg"
-                alt="Prestataire Mbao Express, service de courses à domicile à Dakar"
+                id="prestataireImg"
+                src="assets/Thierry.png"
+                alt="Prestataire Dakar Courses"
                 loading="lazy"
-                width="717"
-                height="1080"
+                width="607"
+                height="900"
+                onerror="this.style.display='none';document.getElementById('photoFallback').style.display='grid';"
               />
-            </picture>
+              <div id="photoFallback" class="photo-fallback">Photo indisponible</div>
+            </div>
           </div>
 
-          <div class="card about-card">
-            <p class="big">Service sérieux et fiable</p>
-            <p style="margin:10px 0 0 0; color:var(--gray); font-weight:700;">
-              Réponse rapide sur WhatsApp ⚡
+          <div class="card trust-card">
+            <p style="font-family:Poppins, Inter, sans-serif; font-weight:900; font-size:16px; margin:0;">
+              Service sérieux et fiable
             </p>
+            <p class="small" style="margin-top:8px;">Réponse rapide sur WhatsApp ⚡</p>
 
-            <div style="margin-top: 14px; display:flex; flex-wrap:wrap; gap:10px;">
+            <div style="margin-top: 12px;">
               <a class="btn btn-primary wa-link" data-wa="commander" href="#">Commander sur WhatsApp</a>
-              <a class="btn btn-ghost wa-link" data-wa="depannage" href="#">⚡ Dépannage</a>
             </div>
-
-            <p style="margin-top: 12px; color: var(--gray); font-size: 13px; font-weight:700;">
-              Horaires : lundi à samedi, 8h – 20h.
-            </p>
           </div>
         </div>
       </div>
@@ -782,41 +764,44 @@
     <!-- FOOTER -->
     <footer class="footer" id="contact">
       <div class="container">
-        <div class="footer-grid">
-          <div>
-            <p style="margin:0; font-family:Poppins, Inter, sans-serif; font-weight:900; font-size:16px;">
-              Mbao Express
-            </p>
-            <small>Commande via WhatsApp • Dakar et alentours • Lun–Sam • 8h–20h</small>
+        <p style="margin:0; font-family:Poppins, Inter, sans-serif; font-weight:900; font-size:14px;">
+          Dakar Courses
+        </p>
+        <small>Commande via WhatsApp • Lun–Sam • 8h–20h • Dakar et alentours</small>
 
-            <div class="cta-row">
-              <a class="btn btn-primary wa-link" data-wa="commander" href="#">Commander sur WhatsApp</a>
-              <a class="btn btn-ghost wa-link" data-wa="tarif" href="#">Demander un tarif</a>
-            </div>
+        <!-- Paiement #2 (avant bouton final) -->
+        <div class="card pay" style="margin-top: 14px;">
+          <p class="pay-title">Paiement facile avec Wave et Orange Money</p>
+          <div class="pay-grid">
+            <div class="pay-pill"><div class="pico" aria-hidden="true">📱</div> Wave</div>
+            <div class="pay-pill"><div class="pico" aria-hidden="true">📱</div> Orange Money</div>
+            <div class="pay-pill"><div class="pico" aria-hidden="true">💵</div> Espèces à la livraison</div>
           </div>
-
-          <div class="card" style="padding: 16px;">
-            <p style="margin:0; font-weight:900;">WhatsApp</p>
-            <p style="margin:10px 0 0 0; color: var(--gray); font-size: 14px; font-weight:800;">
-              <span id="wa-display"></span>
-            </p>
-            <p style="margin:8px 0 0 0; color: var(--gray); font-size: 13px; font-weight:700;">
-              Réponse rapide ⚡
-            </p>
-          </div>
+          <p class="pay-note">⚡ Paiement rapide après la course</p>
+          <p class="pay-bonus">Pas besoin de vous déplacer ni de chercher de monnaie</p>
         </div>
 
-        <p style="margin: 14px 0 0 0; color: var(--gray); font-size: 12px; font-weight:700;">
-          © <span id="year"></span> Mbao Express
+        <div style="margin-top: 14px; display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+          <a class="btn btn-primary wa-link" data-wa="commander" href="#">Commander sur WhatsApp</a>
+          <a class="link wa-link" data-wa="tarif" href="#">Demander un tarif</a>
+        </div>
+
+        <p class="small" style="margin-top: 12px;">
+          WhatsApp : <span id="wa-display"></span>
+        </p>
+
+        <p class="small" style="margin-top: 8px;">
+          © <span id="year"></span> Dakar Courses
         </p>
       </div>
     </footer>
 
-    <!-- Floating WhatsApp -->
+    <!-- Floating WhatsApp (compact round) -->
     <div class="wa-float" aria-label="Bouton WhatsApp flottant">
       <a class="wa-link" data-wa="commander" href="#">
         <span class="sr-only">Ouvrir WhatsApp</span>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <!-- simple icon -->
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path
             d="M20.5 11.8a8.5 8.5 0 10-16.2 3.6L3 21l5.8-1.2a8.5 8.5 0 0011.7-8z"
             stroke="white"
@@ -828,44 +813,37 @@
             fill="white"
           />
         </svg>
-        WhatsApp
       </a>
     </div>
 
     <script>
       const CONFIG = {
-        brandName: "Mbao Express",
+        brandName: "Dakar Courses",
         waPhoneE164: "2217788207167",
         waDisplay: "+221 778 820 71 67",
         messages: {
           commander: "Bonjour, je souhaite faire une course à Dakar. Voici ma demande : ",
           tarif: "Bonjour, je souhaite connaître le tarif exact. Détails : ",
-          depannage: "Bonjour, j’ai besoin d’un dépannage. Voici ma demande : ",
-          dakar: "Bonjour, j’ai besoin d’une course à Dakar. Voici ma demande : ",
         },
       };
 
       const buildWaUrl = (message) => {
         const base = `https://wa.me/${CONFIG.waPhoneE164}`;
-        const text = encodeURIComponent(message);
-        return `${base}?text=${text}`;
-      };
-
-      const bindWaLinks = () => {
-        document.querySelectorAll(".wa-link[data-wa]").forEach((a) => {
-          const key = a.getAttribute("data-wa");
-          const msg = CONFIG.messages[key] ?? CONFIG.messages.commander;
-          a.setAttribute("href", buildWaUrl(msg));
-          a.setAttribute("target", "_blank");
-          a.setAttribute("rel", "noopener noreferrer");
-          a.setAttribute("aria-label", `Ouvrir WhatsApp — ${CONFIG.brandName}`);
-        });
+        return `${base}?text=${encodeURIComponent(message)}`;
       };
 
       const init = () => {
         document.getElementById("year").textContent = String(new Date().getFullYear());
         document.getElementById("wa-display").textContent = CONFIG.waDisplay;
-        bindWaLinks();
+
+        document.querySelectorAll(".wa-link[data-wa]").forEach((a) => {
+          const key = a.getAttribute("data-wa");
+          const msg = CONFIG.messages[key] ?? CONFIG.messages.commander;
+          a.href = buildWaUrl(msg);
+          a.target = "_blank";
+          a.rel = "noopener noreferrer";
+          a.setAttribute("aria-label", `Ouvrir WhatsApp — ${CONFIG.brandName}`);
+        });
       };
 
       init();

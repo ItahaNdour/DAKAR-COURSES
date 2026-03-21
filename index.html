@@ -1,4 +1,4 @@
-<!-- /index.html (V4 compact mobile) -->
+<!-- /index.html (V5 — compact mobile + grilles 2 colonnes) -->
 <!doctype html>
 <html lang="fr">
   <head>
@@ -34,22 +34,24 @@
         --anthracite: #1f2937;
         --gray: #6b7280;
         --white: #ffffff;
-        --line: rgba(31, 41, 55, 0.10);
+        --line: rgba(31, 41, 55, 0.1);
         --shadow: 0 10px 24px rgba(17, 24, 39, 0.07);
         --radius: 16px;
         --max: 1080px;
 
-        /* Mobile scale targets */
-        --h1: 34px;   /* <= 36px */
-        --h2: 24px;   /* <= 28px */
-        --p: 16px;    /* 16–18px */
-        --small: 14px;/* 14–15px */
-        --lh: 1.35;
+        /* Mobile scale (compact + lisible) */
+        --h1: 36px;   /* <= 36px */
+        --h2: 26px;   /* <= 28px */
+        --p: 17px;    /* 16–18px */
+        --small: 15px;/* 14–15px */
+        --lh: 1.42;
+
+        /* Spacing */
         --sectionY: 34px; /* <= 48px */
         --gap: 12px;      /* 12–16px */
-        --cardPad: 14px;  /* 16–18px (we keep 14–16 to be tighter) */
-        --btnPadY: 10px;
-        --btnPadX: 14px;
+        --cardPad: 14px;  /* 16–18px (compact) */
+        --btnY: 10px;
+        --btnX: 14px;
       }
 
       * { box-sizing: border-box; }
@@ -69,7 +71,7 @@
         padding: 0 16px;
       }
 
-      /* Header (compact) */
+      /* Header compact (sticky) */
       .topbar {
         position: sticky;
         top: 0;
@@ -79,13 +81,12 @@
         border-bottom: 1px solid var(--line);
       }
       .topbar-inner {
-        height: 64px; /* target 64–72px */
+        height: 64px; /* 64–72 */
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 10px;
       }
-
       .brand {
         display: flex;
         align-items: center;
@@ -96,14 +97,13 @@
         width: 34px;
         height: 34px;
         border-radius: 12px;
-        background: rgba(31, 166, 90, 0.10);
+        background: rgba(31, 166, 90, 0.1);
         border: 1px solid rgba(31, 166, 90, 0.18);
         display: grid;
         place-items: center;
         flex: 0 0 auto;
       }
       .logo svg { width: 18px; height: 18px; }
-
       .brand-text { min-width: 0; }
       .brand-title {
         font-family: Poppins, Inter, sans-serif;
@@ -115,15 +115,7 @@
         overflow: hidden;
         text-overflow: ellipsis;
       }
-      .brand-sub {
-        display: none; /* hide tagline on mobile sticky */
-        margin: 2px 0 0 0;
-        font-size: 12px;
-        color: var(--gray);
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
+      .brand-sub { display: none; }
 
       .nav { display: none; gap: 10px; align-items: center; }
       .nav a {
@@ -134,6 +126,7 @@
       }
       .nav a:hover { color: var(--anthracite); background: rgba(31, 41, 55, 0.04); }
 
+      /* Buttons / links */
       .btn {
         display: inline-flex;
         align-items: center;
@@ -142,7 +135,7 @@
         border: 0;
         cursor: pointer;
         border-radius: 999px;
-        padding: var(--btnPadY) var(--btnPadX);
+        padding: var(--btnY) var(--btnX);
         font-weight: 900;
         font-size: 14px;
         transition: background 0.15s ease, transform 0.08s ease;
@@ -150,20 +143,12 @@
         white-space: nowrap;
       }
       .btn:active { transform: scale(0.99); }
-
       .btn-primary {
         background: var(--green);
         color: var(--white);
         box-shadow: 0 10px 18px rgba(31, 166, 90, 0.18);
       }
       .btn-primary:hover { background: var(--green-dark); }
-
-      .btn-ghost {
-        background: rgba(31, 166, 90, 0.10);
-        color: var(--green-dark);
-      }
-      .btn-ghost:hover { background: rgba(31, 166, 90, 0.14); }
-
       .link {
         font-weight: 900;
         font-size: 14px;
@@ -172,21 +157,7 @@
         text-underline-offset: 3px;
       }
 
-      /* Layout */
-      .section { padding: var(--sectionY) 0; }
-      .card {
-        background: var(--white);
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        box-shadow: var(--shadow);
-      }
-
-      .section-head {
-        display: grid;
-        gap: 8px;
-        margin-bottom: 14px; /* less space */
-      }
-
+      /* Typography */
       h1 {
         font-family: Poppins, Inter, sans-serif;
         font-size: var(--h1);
@@ -201,29 +172,30 @@
         letter-spacing: -0.02em;
         margin: 0;
       }
-      p {
-        margin: 0;
-        font-size: var(--p);
-      }
+      p { margin: 0; font-size: var(--p); }
       .small { font-size: var(--small); color: var(--gray); font-weight: 800; }
+
+      /* Layout */
+      .section { padding: var(--sectionY) 0; }
+      .section-head {
+        display: grid;
+        gap: 8px;
+        margin-bottom: 14px;
+      }
+      .card {
+        background: var(--white);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+      }
 
       /* Hero (dense) */
       .hero { padding: 28px 0 20px; }
-      .subtitle {
-        margin-top: 8px;
-        font-weight: 900;
-        font-size: 17px;
-      }
+      .subtitle { margin-top: 8px; font-weight: 900; font-size: 18px; }
       .hero-cta {
         display: grid;
         gap: 10px;
         margin-top: 14px;
-      }
-      .hero-cta .secondary-row {
-        display: flex;
-        justify-content: flex-start;
-        gap: 10px;
-        align-items: center;
       }
       .chips {
         margin-top: 12px;
@@ -240,44 +212,49 @@
         background: rgba(31, 41, 55, 0.03);
       }
 
-      /* Services (short cards) */
-      .grid-2 { display: grid; gap: var(--gap); }
+      /* Services (2 cols mobile / 4 desktop) */
+      .grid-services{
+        display:grid;
+        gap: var(--gap);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
       .svc {
         padding: var(--cardPad);
         display: flex;
         align-items: center;
         gap: 10px;
+        min-height: 0;
       }
-      .ico {
-        width: 40px; /* <= 48px */
+      .svc .ico{
+        width: 40px;
         height: 40px;
         border-radius: 14px;
         display: grid;
         place-items: center;
-        background: rgba(31, 166, 90, 0.10);
-        border: 1px solid rgba(31, 166, 90, 0.16);
         font-size: 18px;
+        background: rgba(31,166,90,.10);
+        border: 1px solid rgba(31,166,90,.16);
         flex: 0 0 auto;
       }
-      .svc-title {
+      .svc-title{
+        margin: 0;
         font-family: Poppins, Inter, sans-serif;
         font-weight: 900;
         font-size: 15px;
         line-height: 1.1;
-        margin: 0;
       }
-      .svc-line {
+      .svc-line{
         margin-top: 4px;
-        font-size: 13px;
+        font-size: 12.5px;
         font-weight: 800;
         color: var(--gray);
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        max-width: 22ch;
+        max-width: 18ch;
       }
 
-      /* How: compact list (no big cards) */
+      /* How: compact list */
       .how-list {
         display: grid;
         gap: 10px;
@@ -292,14 +269,12 @@
         align-items: center;
         gap: 10px;
         font-weight: 900;
+        font-size: 16px;
       }
       .how-item span:first-child { font-size: 18px; }
 
-      /* Payment compact */
-      .pay {
-        margin-top: 14px;
-        padding: var(--cardPad);
-      }
+      /* Payment (compact) */
+      .pay { margin-top: 14px; padding: var(--cardPad); }
       .pay-title {
         font-family: Poppins, Inter, sans-serif;
         font-weight: 900;
@@ -307,10 +282,7 @@
         margin: 0 0 10px 0;
         letter-spacing: -0.01em;
       }
-      .pay-grid {
-        display: grid;
-        gap: 10px;
-      }
+      .pay-grid { display: grid; gap: 10px; }
       .pay-pill {
         padding: 12px 12px;
         border-radius: 14px;
@@ -331,22 +303,21 @@
         border: 1px solid var(--line);
         background: rgba(255,255,255,0.7);
       }
-      .pay-note {
-        margin-top: 10px;
+      .pay-note, .pay-bonus {
+        margin-top: 8px;
         font-size: 13px;
         font-weight: 900;
         color: var(--gray);
       }
-      .pay-bonus {
-        margin-top: 6px;
-        font-size: 13px;
-        font-weight: 900;
-        color: var(--gray);
-      }
+      .pay-bonus { margin-top: 6px; }
 
-      /* Pricing compact */
-      .pricing { display: grid; gap: var(--gap); }
-      .price-row {
+      /* Pricing (2 cols mobile / 3 desktop) */
+      .pricing{
+        display:grid;
+        gap: var(--gap);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .price-card {
         padding: var(--cardPad);
         display: flex;
         align-items: center;
@@ -360,27 +331,31 @@
         border-radius: 14px;
         display: grid;
         place-items: center;
-        background: rgba(31, 166, 90, 0.10);
-        border: 1px solid rgba(31, 166, 90, 0.16);
+        background: rgba(31,166,90,.10);
+        border: 1px solid rgba(31,166,90,.16);
         font-size: 18px;
         flex: 0 0 auto;
       }
       .price-name {
         font-weight: 900;
-        font-size: 14px;
+        font-size: 13px;
         color: var(--gray);
-        margin-top: 2px;
       }
       .price-big {
         font-family: Poppins, Inter, sans-serif;
         font-weight: 900;
-        font-size: 22px;
+        font-size: 20px;
         letter-spacing: -0.02em;
         white-space: nowrap;
       }
+      .pricing .span-2 { grid-column: span 2; } /* make the 3rd go full width on mobile */
 
-      /* Why compact */
-      .why { display: grid; gap: 10px; }
+      /* Why (2 cols mobile / 4 desktop) */
+      .why{
+        display:grid;
+        gap: 10px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
       .why-pill {
         padding: 12px 14px;
         border-radius: 14px;
@@ -390,17 +365,23 @@
         align-items: center;
         gap: 10px;
         font-weight: 900;
+        font-size: 15px;
       }
 
-      /* Zone + Trust */
+      /* Zone */
       .zone { padding: var(--cardPad); display: grid; gap: 8px; }
-      .zone .big { font-family: Poppins, Inter, sans-serif; font-weight: 900; font-size: 16px; margin: 0; }
+      .zone .big {
+        font-family: Poppins, Inter, sans-serif;
+        font-weight: 900;
+        font-size: 16px;
+        margin: 0;
+      }
 
+      /* Trust (image + fallback) */
       .trust {
         display: grid;
         gap: var(--gap);
       }
-
       .photo {
         padding: 12px;
         display: grid;
@@ -409,7 +390,7 @@
       .photo-box {
         width: 100%;
         max-width: 340px;
-        aspect-ratio: 4 / 5; /* fixed ratio */
+        aspect-ratio: 4 / 5;
         border-radius: 16px;
         border: 1px solid var(--line);
         background: rgba(31, 41, 55, 0.02);
@@ -427,7 +408,6 @@
         font-weight: 900;
         color: var(--gray);
       }
-
       .trust-card { padding: var(--cardPad); }
 
       /* Footer */
@@ -437,7 +417,7 @@
       }
       .footer small { color: var(--gray); font-weight: 900; }
 
-      /* Floating WhatsApp (small) */
+      /* Floating WhatsApp (compact round) */
       .wa-float {
         position: fixed;
         right: 14px;
@@ -445,7 +425,7 @@
         z-index: 60;
       }
       .wa-float a {
-        width: 56px;   /* target 56–64 */
+        width: 56px;
         height: 56px;
         border-radius: 999px;
         display: grid;
@@ -469,7 +449,7 @@
         border: 0;
       }
 
-      /* Desktop enhancements (only add, don't inflate mobile) */
+      /* Desktop tweaks */
       @media (min-width: 860px) {
         :root {
           --h1: 48px;
@@ -477,17 +457,14 @@
           --sectionY: 44px;
           --cardPad: 16px;
         }
-        .brand-sub { display: block; }
+        .brand-sub { display: block; font-size: 12px; margin: 2px 0 0 0; color: var(--gray); }
         .nav { display: flex; }
-        .hero-cta { display: flex; align-items: center; }
-        .hero-cta .secondary-row { margin-left: 10px; }
-        .grid-2 { grid-template-columns: repeat(2, 1fr); }
-        .pay-grid { grid-template-columns: repeat(3, 1fr); }
-        .trust { grid-template-columns: 0.9fr 1.1fr; align-items: start; }
-        .pricing { grid-template-columns: repeat(3, 1fr); }
-        .pricing .price-row { justify-content: flex-start; }
-        .pricing .price-big { margin-left: auto; }
-        .why { grid-template-columns: repeat(4, 1fr); }
+        .grid-services{ grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        .pricing{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        .pricing .span-2 { grid-column: auto; }
+        .why{ grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        .trust{ grid-template-columns: 0.9fr 1.1fr; align-items: start; }
+        .pay-grid{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
       }
     </style>
   </head>
@@ -541,14 +518,11 @@
 
         <div class="hero-cta">
           <a class="btn btn-primary wa-link" data-wa="commander" href="#">Commander sur WhatsApp</a>
-          <div class="secondary-row">
-            <a class="link wa-link" data-wa="tarif" href="#">Demander un tarif</a>
-          </div>
+          <a class="link wa-link" data-wa="tarif" href="#">Demander un tarif</a>
         </div>
 
         <p class="small" style="margin-top:10px;">Réponse rapide sur WhatsApp ⚡</p>
 
-        <!-- 2 badges max (mobile) -->
         <div class="chips" aria-label="Infos clés">
           <span class="chip">📍 Dakar et alentours</span>
           <span class="chip">🕗 Lun–Sam • 8h–20h</span>
@@ -564,7 +538,7 @@
           <p class="small">Court, clair.</p>
         </div>
 
-        <div class="grid-2">
+        <div class="grid-services">
           <div class="card svc">
             <div class="ico" aria-hidden="true">🧺</div>
             <div>
@@ -598,7 +572,7 @@
           </div>
         </div>
 
-        <div style="margin-top: 14px;">
+        <div style="margin-top:14px;">
           <a class="btn btn-primary wa-link" data-wa="commander" href="#">Commander sur WhatsApp</a>
         </div>
       </div>
@@ -618,8 +592,8 @@
           <div class="how-item"><span aria-hidden="true">🚚</span> On livre</div>
         </div>
 
-        <!-- Paiement #1 -->
-        <div class="card pay" style="margin-top: 14px;">
+        <!-- Paiement #1 (sous comment) -->
+        <div class="card pay">
           <p class="pay-title">Paiement facile avec Wave et Orange Money</p>
           <div class="pay-grid">
             <div class="pay-pill"><div class="pico" aria-hidden="true">📱</div> Wave</div>
@@ -630,7 +604,7 @@
           <p class="pay-bonus">Pas besoin de vous déplacer ni de chercher de monnaie</p>
         </div>
 
-        <div style="margin-top: 14px;">
+        <div style="margin-top:14px;">
           <a class="btn btn-primary wa-link" data-wa="commander" href="#">Commander sur WhatsApp</a>
         </div>
       </div>
@@ -645,38 +619,32 @@
         </div>
 
         <div class="pricing">
-          <div class="card price-row">
+          <div class="card price-card">
             <div class="price-left">
               <div class="price-tag" aria-hidden="true">⚡</div>
-              <div>
-                <div class="price-name">Dépannage</div>
-              </div>
+              <div class="price-name">Dépannage</div>
             </div>
             <div class="price-big">500F</div>
           </div>
 
-          <div class="card price-row">
+          <div class="card price-card">
             <div class="price-left">
               <div class="price-tag" aria-hidden="true">🧺</div>
-              <div>
-                <div class="price-name">Courses</div>
-              </div>
+              <div class="price-name">Courses</div>
             </div>
             <div class="price-big">1000F</div>
           </div>
 
-          <div class="card price-row">
+          <div class="card price-card span-2">
             <div class="price-left">
               <div class="price-tag" aria-hidden="true">🚗</div>
-              <div>
-                <div class="price-name">Dakar</div>
-              </div>
+              <div class="price-name">Dakar</div>
             </div>
             <div class="price-big">Sur demande</div>
           </div>
         </div>
 
-        <div style="margin-top: 14px; display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+        <div style="margin-top:14px; display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
           <a class="btn btn-primary wa-link" data-wa="commander" href="#">Commander</a>
           <a class="link wa-link" data-wa="tarif" href="#">Demander un tarif</a>
         </div>
@@ -698,7 +666,7 @@
           <div class="why-pill"><span aria-hidden="true">💬</span> Simple</div>
         </div>
 
-        <div style="margin-top: 14px;">
+        <div style="margin-top:14px;">
           <a class="btn btn-primary wa-link" data-wa="commander" href="#">Commander sur WhatsApp</a>
         </div>
       </div>
@@ -716,7 +684,7 @@
           <p class="big">👉 Dakar et alentours</p>
           <p class="small">Basé à Mbao, déplacements possibles selon demande.</p>
 
-          <div style="margin-top: 10px;">
+          <div style="margin-top:10px;">
             <a class="btn btn-primary wa-link" data-wa="commander" href="#">Commander sur WhatsApp</a>
           </div>
         </div>
@@ -734,15 +702,18 @@
         <div class="trust">
           <div class="card photo">
             <div class="photo-box">
-              <img
-                id="prestataireImg"
-                src="assets/Thierry.png"
-                alt="Prestataire Dakar Courses"
-                loading="lazy"
-                width="607"
-                height="900"
-                onerror="this.style.display='none';document.getElementById('photoFallback').style.display='grid';"
-              />
+              <picture>
+                <source srcset="assets/prestataire-nobg.webp" type="image/webp" />
+                <img
+                  id="prestataireImg"
+                  src="assets/Thierry.png"
+                  alt="Prestataire Dakar Courses"
+                  loading="lazy"
+                  width="607"
+                  height="900"
+                  onerror="this.style.display='none';document.getElementById('photoFallback').style.display='grid';"
+                />
+              </picture>
               <div id="photoFallback" class="photo-fallback">Photo indisponible</div>
             </div>
           </div>
@@ -753,7 +724,7 @@
             </p>
             <p class="small" style="margin-top:8px;">Réponse rapide sur WhatsApp ⚡</p>
 
-            <div style="margin-top: 12px;">
+            <div style="margin-top:12px;">
               <a class="btn btn-primary wa-link" data-wa="commander" href="#">Commander sur WhatsApp</a>
             </div>
           </div>
@@ -770,7 +741,7 @@
         <small>Commande via WhatsApp • Lun–Sam • 8h–20h • Dakar et alentours</small>
 
         <!-- Paiement #2 (avant bouton final) -->
-        <div class="card pay" style="margin-top: 14px;">
+        <div class="card pay" style="margin-top:14px;">
           <p class="pay-title">Paiement facile avec Wave et Orange Money</p>
           <div class="pay-grid">
             <div class="pay-pill"><div class="pico" aria-hidden="true">📱</div> Wave</div>
@@ -781,26 +752,20 @@
           <p class="pay-bonus">Pas besoin de vous déplacer ni de chercher de monnaie</p>
         </div>
 
-        <div style="margin-top: 14px; display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+        <div style="margin-top:14px; display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
           <a class="btn btn-primary wa-link" data-wa="commander" href="#">Commander sur WhatsApp</a>
           <a class="link wa-link" data-wa="tarif" href="#">Demander un tarif</a>
         </div>
 
-        <p class="small" style="margin-top: 12px;">
-          WhatsApp : <span id="wa-display"></span>
-        </p>
-
-        <p class="small" style="margin-top: 8px;">
-          © <span id="year"></span> Dakar Courses
-        </p>
+        <p class="small" style="margin-top:12px;">WhatsApp : <span id="wa-display"></span></p>
+        <p class="small" style="margin-top:8px;">© <span id="year"></span> Dakar Courses</p>
       </div>
     </footer>
 
-    <!-- Floating WhatsApp (compact round) -->
+    <!-- Floating WhatsApp (compact) -->
     <div class="wa-float" aria-label="Bouton WhatsApp flottant">
       <a class="wa-link" data-wa="commander" href="#">
         <span class="sr-only">Ouvrir WhatsApp</span>
-        <!-- simple icon -->
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path
             d="M20.5 11.8a8.5 8.5 0 10-16.2 3.6L3 21l5.8-1.2a8.5 8.5 0 0011.7-8z"

@@ -1,79 +1,448 @@
-<!-- /index.html (V6 — textes /2 mobile + tout en colonnes) -->
+<!-- /index.html (V7 — Dakar Courses / compact mobile / sections + WhatsApp focus) -->
 <!doctype html>
 <html lang="fr">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+
     <title>Dakar Courses — Courses à domicile</title>
-    <meta name="description" content="On fait vos courses à Dakar et alentours. Rapide. Fiable. À domicile. Paiement facile Wave / Orange Money / Espèces. Commande via WhatsApp." />
+    <meta
+      name="description"
+      content="Dakar Courses : courses à domicile à Dakar et alentours. Livraison dans la journée ou express. Paiement Wave, Orange Money, espèces. Commande via WhatsApp."
+    />
     <meta name="robots" content="index,follow" />
     <meta name="theme-color" content="#1FA65A" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:wght@700;800&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+
     <style>
-      :root{--green:#1fa65a;--green-dark:#0e6b3a;--anthracite:#1f2937;--gray:#6b7280;--white:#fff;--line:rgba(31,41,55,.12);--shadow:0 8px 18px rgba(17,24,39,.06);--radius:14px;--max:1080px;--h1:22px;--h2:16px;--p:13px;--small:11px;--btn:12px;--lh:1.25;--sectionY:18px;--gap:10px;--cardPad:10px;--headerH:56px}
-      *{box-sizing:border-box}html,body{margin:0;padding:0}body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--anthracite);background:var(--white);line-height:var(--lh)}
-      a{color:inherit;text-decoration:none}img{max-width:100%;height:auto;display:block}.container{width:min(100%,var(--max));margin:0 auto;padding:0 14px}
-      .topbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-      .topbar-inner{height:var(--headerH);display:flex;align-items:center;justify-content:space-between;gap:10px}
-      .brand{display:flex;align-items:center;gap:8px;min-width:0}.logo{width:28px;height:28px;border-radius:10px;background:rgba(31,166,90,.1);border:1px solid rgba(31,166,90,.18);display:grid;place-items:center;flex:0 0 auto}.logo svg{width:16px;height:16px}
-      .brand-title{font-family:Poppins,Inter,sans-serif;font-weight:900;font-size:12px;margin:0;line-height:1.05;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-      .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;border-radius:999px;padding:8px 12px;font-weight:900;font-size:var(--btn);user-select:none;white-space:nowrap}
-      .btn-primary{background:var(--green);color:var(--white);box-shadow:0 10px 16px rgba(31,166,90,.14)}.btn-primary:hover{background:var(--green-dark)}
-      .link{font-weight:900;font-size:var(--btn);color:var(--green-dark);text-decoration:underline;text-underline-offset:2px}
-      h1{font-family:Poppins,Inter,sans-serif;font-size:var(--h1);line-height:1.05;letter-spacing:-.02em;margin:0}
-      h2{font-family:Poppins,Inter,sans-serif;font-size:var(--h2);line-height:1.1;letter-spacing:-.01em;margin:0}
-      p{margin:0;font-size:var(--p)}.small{font-size:var(--small);color:var(--gray);font-weight:800}
-      .section{padding:var(--sectionY) 0}.section-head{display:grid;gap:6px;margin-bottom:10px}
-      .card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
-      .hero{padding:14px 0 10px}.subtitle{margin-top:6px;font-weight:900;font-size:13px}
-      .hero-actions{margin-top:10px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-      .chips{margin-top:10px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-      .chip{font-size:11px;font-weight:900;padding:8px 10px;border-radius:999px;border:1px solid var(--line);background:rgba(31,41,55,.03);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-      .grid-services{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gap)}
-      .svc{padding:var(--cardPad);display:flex;align-items:center;gap:8px}.ico{width:32px;height:32px;border-radius:12px;display:grid;place-items:center;background:rgba(31,166,90,.1);border:1px solid rgba(31,166,90,.16);font-size:16px;flex:0 0 auto}
-      .svc-title{font-family:Poppins,Inter,sans-serif;font-weight:900;font-size:12px;margin:0;line-height:1.1}
-      .svc-line{margin-top:3px;font-size:11px;font-weight:800;color:var(--gray);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:16ch}
-      .grid-how{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap)}
-      .how{padding:var(--cardPad);display:flex;align-items:center;gap:8px;justify-content:center;text-align:center;font-weight:900;font-size:12px;background:rgba(31,41,55,.02);border:1px solid var(--line);border-radius:var(--radius)}
-      .how span{font-size:16px}
-      .pay{padding:var(--cardPad)}.pay-title{font-family:Poppins,Inter,sans-serif;font-weight:900;font-size:12px;margin:0 0 8px 0}
-      .grid-pay{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap)}
-      .pay-item{padding:10px;border-radius:var(--radius);border:1px solid var(--line);background:rgba(31,41,55,.02);display:grid;gap:6px;justify-items:center;text-align:center;font-weight:900;font-size:11px}
-      .pay-item .pico{width:30px;height:30px;border-radius:12px;display:grid;place-items:center;border:1px solid var(--line);background:rgba(255,255,255,.7);font-size:14px}
-      .pay-note{margin-top:8px;font-size:11px;font-weight:900;color:var(--gray)}.pay-bonus{margin-top:6px;font-size:11px;font-weight:900;color:var(--gray)}
-      .grid-pricing{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gap)}
-      .price{padding:var(--cardPad);display:flex;align-items:center;justify-content:space-between;gap:8px}
-      .price-left{display:flex;align-items:center;gap:8px;min-width:0}
-      .price .tag{width:32px;height:32px;border-radius:12px;display:grid;place-items:center;background:rgba(31,166,90,.1);border:1px solid rgba(31,166,90,.16);font-size:16px;flex:0 0 auto}
-      .price-name{font-size:11px;font-weight:900;color:var(--gray)}
-      .price-val{font-family:Poppins,Inter,sans-serif;font-weight:900;font-size:14px;white-space:nowrap}
-      .span-2{grid-column:span 2}
-      .grid-why{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gap)}
-      .why{padding:10px;border-radius:var(--radius);border:1px solid var(--line);background:rgba(31,41,55,.02);display:flex;align-items:center;gap:8px;font-weight:900;font-size:12px}
-      .why span{font-size:14px}
-      .zone{padding:var(--cardPad);display:grid;gap:6px}
-      .trust{display:grid;grid-template-columns:1fr;gap:var(--gap)}
-      .photo{padding:10px;display:grid;place-items:center}
-      .photo-box{width:100%;max-width:280px;aspect-ratio:4/5;border-radius:var(--radius);border:1px solid var(--line);background:rgba(31,41,55,.02);overflow:hidden;display:grid;place-items:center}
-      .photo-box img{width:100%;height:100%;object-fit:contain}
-      .photo-fallback{display:none;width:100%;height:100%;place-items:center;font-family:Poppins,Inter,sans-serif;font-weight:900;color:var(--gray);font-size:12px}
-      .trust-card{padding:var(--cardPad)}
-      .footer{padding:16px 0 70px;border-top:1px solid var(--line)}
-      .wa-float{position:fixed;right:12px;bottom:12px;z-index:60}
-      .wa-float a{width:48px;height:48px;border-radius:999px;display:grid;place-items:center;background:var(--green);color:var(--white);box-shadow:0 12px 22px rgba(31,166,90,.22);border:1px solid rgba(255,255,255,.18)}
-      .wa-float a:hover{background:var(--green-dark)}
-      .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-      @media (min-width:860px){
-        :root{--h1:44px;--h2:24px;--p:16px;--small:13px;--btn:14px;--lh:1.35;--sectionY:34px;--cardPad:14px;--headerH:64px}
-        .grid-services{grid-template-columns:repeat(4,minmax(0,1fr))}
-        .grid-pricing{grid-template-columns:repeat(3,minmax(0,1fr))}
-        .span-2{grid-column:auto}
-        .trust{grid-template-columns:.9fr 1.1fr;align-items:start}
+      :root {
+        --green: #1fa65a;
+        --green-dark: #0e6b3a;
+        --anthracite: #1f2937;
+        --gray: #6b7280;
+        --white: #ffffff;
+        --line: rgba(31, 41, 55, 0.12);
+        --shadow: 0 8px 18px rgba(17, 24, 39, 0.06);
+        --radius: 14px;
+        --max: 1080px;
+
+        /* Mobile compact (plus de contenu visible) */
+        --h1: 22px;
+        --h2: 16px;
+        --p: 13px;
+        --small: 11px;
+        --btn: 12px;
+        --lh: 1.25;
+
+        --sectionY: 18px;
+        --gap: 10px;
+        --cardPad: 10px;
+
+        --headerH: 56px;
+      }
+
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; }
+      body {
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        color: var(--anthracite);
+        background: var(--white);
+        line-height: var(--lh);
+      }
+      a { color: inherit; text-decoration: none; }
+      img { max-width: 100%; height: auto; display: block; }
+
+      .container {
+        width: min(100%, var(--max));
+        margin: 0 auto;
+        padding: 0 14px;
+      }
+
+      /* Header ultra compact */
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(255, 255, 255, 0.96);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--line);
+      }
+      .topbar-inner {
+        height: var(--headerH);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      .brand { display: flex; align-items: center; gap: 8px; min-width: 0; }
+      .logo {
+        width: 28px;
+        height: 28px;
+        border-radius: 10px;
+        background: rgba(31, 166, 90, 0.10);
+        border: 1px solid rgba(31, 166, 90, 0.18);
+        display: grid;
+        place-items: center;
+        flex: 0 0 auto;
+      }
+      .logo svg { width: 16px; height: 16px; }
+      .brand-title {
+        font-family: Poppins, Inter, sans-serif;
+        font-weight: 900;
+        font-size: 12px;
+        margin: 0;
+        line-height: 1.05;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border: 0;
+        cursor: pointer;
+        border-radius: 999px;
+        padding: 8px 12px;
+        font-weight: 900;
+        font-size: var(--btn);
+        user-select: none;
+        white-space: nowrap;
+      }
+      .btn-primary {
+        background: var(--green);
+        color: var(--white);
+        box-shadow: 0 10px 16px rgba(31, 166, 90, 0.14);
+      }
+      .btn-primary:hover { background: var(--green-dark); }
+
+      .link {
+        font-weight: 900;
+        font-size: var(--btn);
+        color: var(--green-dark);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+
+      h1 {
+        font-family: Poppins, Inter, sans-serif;
+        font-size: var(--h1);
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+        margin: 0;
+      }
+      h2 {
+        font-family: Poppins, Inter, sans-serif;
+        font-size: var(--h2);
+        line-height: 1.1;
+        letter-spacing: -0.01em;
+        margin: 0;
+      }
+      p { margin: 0; font-size: var(--p); }
+      .small { font-size: var(--small); color: var(--gray); font-weight: 800; }
+
+      .section { padding: var(--sectionY) 0; }
+      .section-head { display: grid; gap: 6px; margin-bottom: 10px; }
+
+      .card {
+        background: var(--white);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+      }
+
+      /* Hero */
+      .hero { padding: 14px 0 10px; }
+      .subtitle { margin-top: 6px; font-weight: 900; font-size: 13px; }
+      .hero-actions { margin-top: 10px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+      .chips {
+        margin-top: 10px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+      .chip {
+        font-size: 11px;
+        font-weight: 900;
+        padding: 8px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(31, 41, 55, 0.03);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      /* Services (2 colonnes) */
+      .grid-services {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--gap);
+      }
+      .svc { padding: var(--cardPad); display: flex; align-items: center; gap: 8px; }
+      .ico {
+        width: 32px;
+        height: 32px;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        background: rgba(31, 166, 90, 0.10);
+        border: 1px solid rgba(31, 166, 90, 0.16);
+        font-size: 16px;
+        flex: 0 0 auto;
+      }
+      .svc-title {
+        font-family: Poppins, Inter, sans-serif;
+        font-weight: 900;
+        font-size: 12px;
+        margin: 0;
+        line-height: 1.1;
+      }
+      .svc-line {
+        margin-top: 3px;
+        font-size: 11px;
+        font-weight: 800;
+        color: var(--gray);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 16ch;
+      }
+
+      /* Grilles utilitaires */
+      .grid-4 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap); }
+      .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); }
+
+      /* How (4 items) */
+      .how {
+        padding: var(--cardPad);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        justify-content: center;
+        text-align: center;
+        font-weight: 900;
+        font-size: 11.5px;
+        background: rgba(31, 41, 55, 0.02);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+      }
+      .how span { font-size: 15px; }
+
+      /* Livraison */
+      .ship {
+        padding: var(--cardPad);
+        display: grid;
+        gap: 6px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: rgba(31, 41, 55, 0.02);
+      }
+      .ship .row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 900;
+        font-size: 11.5px;
+      }
+      .ship .row span { font-size: 14px; }
+
+      /* Paiement */
+      .pay { padding: var(--cardPad); }
+      .pay-title {
+        font-family: Poppins, Inter, sans-serif;
+        font-weight: 900;
+        font-size: 12px;
+        margin: 0 0 8px 0;
+      }
+      .pay-item {
+        padding: 10px;
+        border-radius: var(--radius);
+        border: 1px solid var(--line);
+        background: rgba(31, 41, 55, 0.02);
+        display: grid;
+        gap: 6px;
+        justify-items: center;
+        text-align: center;
+        font-weight: 900;
+        font-size: 11px;
+      }
+      .pay-item .pico {
+        width: 30px;
+        height: 30px;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.7);
+        font-size: 14px;
+      }
+      .pay-note { margin-top: 8px; font-size: 11px; font-weight: 900; color: var(--gray); }
+
+      /* Tarifs */
+      .grid-pricing {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--gap);
+      }
+      .price {
+        padding: var(--cardPad);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+      }
+      .price-left { display: flex; align-items: center; gap: 8px; min-width: 0; }
+      .price .tag {
+        width: 32px;
+        height: 32px;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        background: rgba(31, 166, 90, 0.10);
+        border: 1px solid rgba(31, 166, 90, 0.16);
+        font-size: 16px;
+        flex: 0 0 auto;
+      }
+      .price-name { font-size: 11px; font-weight: 900; color: var(--gray); }
+      .price-val {
+        font-family: Poppins, Inter, sans-serif;
+        font-weight: 900;
+        font-size: 14px;
+        white-space: nowrap;
+      }
+      .span-2 { grid-column: span 2; }
+      .fee { margin-top: 8px; }
+
+      /* Pourquoi */
+      .grid-why {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--gap);
+      }
+      .why {
+        padding: 10px;
+        border-radius: var(--radius);
+        border: 1px solid var(--line);
+        background: rgba(31, 41, 55, 0.02);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 900;
+        font-size: 12px;
+      }
+      .why span { font-size: 14px; }
+
+      /* Mentions */
+      .mentions {
+        margin-top: 8px;
+        display: grid;
+        gap: 4px;
+      }
+      .mention { font-size: 11px; font-weight: 900; color: var(--gray); }
+
+      /* Zone */
+      .zone { padding: var(--cardPad); display: grid; gap: 6px; }
+
+      /* Confiance (image + fallback) */
+      .trust { display: grid; grid-template-columns: 1fr; gap: var(--gap); }
+      .photo { padding: 10px; display: grid; place-items: center; }
+      .photo-box {
+        width: 100%;
+        max-width: 280px;
+        aspect-ratio: 4 / 5;
+        border-radius: var(--radius);
+        border: 1px solid var(--line);
+        background: rgba(31, 41, 55, 0.02);
+        overflow: hidden;
+        display: grid;
+        place-items: center;
+      }
+      .photo-box img { width: 100%; height: 100%; object-fit: cover; }
+      .photo-fallback {
+        display: none;
+        width: 100%;
+        height: 100%;
+        place-items: center;
+        font-family: Poppins, Inter, sans-serif;
+        font-weight: 900;
+        color: var(--gray);
+        font-size: 12px;
+      }
+      .trust-card { padding: var(--cardPad); }
+
+      /* Footer compact */
+      .footer {
+        padding: 16px 0 70px;
+        border-top: 1px solid var(--line);
+      }
+
+      /* Floating WhatsApp (plus petit) */
+      .wa-float {
+        position: fixed;
+        right: 12px;
+        bottom: 12px;
+        z-index: 60;
+      }
+      .wa-float a {
+        width: 44px;
+        height: 44px;
+        border-radius: 999px;
+        display: grid;
+        place-items: center;
+        background: var(--green);
+        color: var(--white);
+        box-shadow: 0 12px 22px rgba(31, 166, 90, 0.22);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+      }
+      .wa-float a:hover { background: var(--green-dark); }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      /* Desktop (remonte en taille sinon trop petit) */
+      @media (min-width: 860px) {
+        :root {
+          --h1: 44px;
+          --h2: 24px;
+          --p: 16px;
+          --small: 13px;
+          --btn: 14px;
+          --lh: 1.35;
+
+          --sectionY: 34px;
+          --cardPad: 14px;
+          --headerH: 64px;
+        }
+
+        .grid-services { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        .grid-pricing { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        .span-2 { grid-column: auto; }
+        .trust { grid-template-columns: 0.9fr 1.1fr; align-items: start; }
+        .chips { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       }
     </style>
   </head>
+
   <body>
     <header class="topbar">
       <div class="container">
@@ -81,116 +450,234 @@
           <div class="brand">
             <div class="logo" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none">
-                <path d="M12 22s7-4.5 7-12a7 7 0 10-14 0c0 7.5 7 12 7 12z" stroke="currentColor" stroke-width="1.9" style="color: var(--green-dark)" />
+                <path
+                  d="M12 22s7-4.5 7-12a7 7 0 10-14 0c0 7.5 7 12 7 12z"
+                  stroke="currentColor"
+                  stroke-width="1.9"
+                  style="color: var(--green-dark)"
+                />
               </svg>
             </div>
             <p class="brand-title">Dakar Courses</p>
           </div>
-          <a class="btn btn-primary wa-link" data-wa="commander" href="#">WhatsApp</a>
+
+          <a class="btn btn-primary wa-link" data-wa="commander" href="#">Commander maintenant</a>
         </div>
       </div>
     </header>
 
+    <!-- HERO -->
     <section class="hero" id="top">
       <div class="container">
         <h1>On fait vos courses à Dakar</h1>
         <p class="subtitle">Rapide. Fiable. À domicile.</p>
 
         <div class="hero-actions">
-          <a class="btn btn-primary wa-link" data-wa="commander" href="#">Commander</a>
-          <a class="link wa-link" data-wa="tarif" href="#">Tarif</a>
+          <a class="btn btn-primary wa-link" data-wa="commander" href="#">Commander maintenant</a>
+          <a class="link wa-link" data-wa="commander" href="#">Commande en 1 minute ⚡</a>
         </div>
 
-        <p class="small" style="margin-top:8px;">Réponse rapide sur WhatsApp ⚡</p>
+        <div class="mentions">
+          <div class="mention">Réponse rapide sur WhatsApp ⚡</div>
+          <div class="mention">Commande validée après confirmation</div>
+        </div>
 
-        <div class="chips">
+        <div class="chips" aria-label="Infos clés">
           <span class="chip">📍 Dakar et alentours</span>
           <span class="chip">🕗 Lun–Sam • 8h–20h</span>
         </div>
       </div>
     </section>
 
+    <!-- SERVICES -->
     <section class="section" id="services">
       <div class="container">
         <div class="section-head">
           <h2>Services</h2>
-          <p class="small">2 colonnes • 4 blocs</p>
+          <p class="small">Simple • 2 colonnes</p>
         </div>
 
         <div class="grid-services">
-          <div class="card svc"><div class="ico">🧺</div><div><p class="svc-title">Courses</p><p class="svc-line">quotidien</p></div></div>
-          <div class="card svc"><div class="ico">⚡</div><div><p class="svc-title">Dépannage</p><p class="svc-line">urgent</p></div></div>
-          <div class="card svc"><div class="ico">🛒</div><div><p class="svc-title">Achats</p><p class="svc-line">utiles</p></div></div>
-          <div class="card svc"><div class="ico">🚗</div><div><p class="svc-title">Dakar</p><p class="svc-line">sur demande</p></div></div>
+          <div class="card svc">
+            <div class="ico" aria-hidden="true">🧺</div>
+            <div>
+              <p class="svc-title">Courses</p>
+              <p class="svc-line">du quotidien</p>
+            </div>
+          </div>
+
+          <div class="card svc">
+            <div class="ico" aria-hidden="true">⚡</div>
+            <div>
+              <p class="svc-title">Dépannage</p>
+              <p class="svc-line">urgent</p>
+            </div>
+          </div>
+
+          <div class="card svc">
+            <div class="ico" aria-hidden="true">🛒</div>
+            <div>
+              <p class="svc-title">Achats</p>
+              <p class="svc-line">utiles</p>
+            </div>
+          </div>
+
+          <div class="card svc">
+            <div class="ico" aria-hidden="true">🚗</div>
+            <div>
+              <p class="svc-title">Dakar</p>
+              <p class="svc-line">sur demande</p>
+            </div>
+          </div>
         </div>
 
-        <div style="margin-top:10px;"><a class="btn btn-primary wa-link" data-wa="commander" href="#">Commander</a></div>
+        <div style="margin-top: 10px;">
+          <a class="btn btn-primary wa-link" data-wa="commander" href="#">Commander maintenant</a>
+        </div>
       </div>
     </section>
 
-    <section class="section" id="how">
+    <!-- COMMENT COMMANDER -->
+    <section class="section" id="commander">
       <div class="container">
         <div class="section-head">
-          <h2>Comment</h2>
-          <p class="small">3 étapes</p>
+          <h2>Comment commander</h2>
+          <p class="small">4 étapes</p>
         </div>
 
-        <div class="grid-how">
-          <div class="how"><span>📩</span>Tu envoies</div>
-          <div class="how"><span>🛒</span>On achète</div>
-          <div class="how"><span>🚚</span>On livre</div>
+        <div class="grid-4">
+          <div class="how"><span aria-hidden="true">📩</span>Envoyez votre demande</div>
+          <div class="how"><span aria-hidden="true">⏱️</span>Recevez prix + délai</div>
+          <div class="how"><span aria-hidden="true">💳</span>Payez</div>
+          <div class="how"><span aria-hidden="true">🚚</span>On livre</div>
         </div>
 
-        <div class="card pay" style="margin-top:10px;">
-          <p class="pay-title">Paiement facile avec Wave et Orange Money</p>
-          <div class="grid-pay">
-            <div class="pay-item"><div class="pico">📱</div>Wave</div>
-            <div class="pay-item"><div class="pico">📱</div>Orange Money</div>
-            <div class="pay-item"><div class="pico">💵</div>Espèces</div>
-          </div>
-          <p class="pay-note">⚡ Paiement rapide après la course</p>
-          <p class="pay-bonus">Pas besoin de vous déplacer ni de chercher de monnaie</p>
+        <div class="mentions">
+          <div class="mention">Délai confirmé avant paiement ⏱️</div>
+          <div class="mention">Commande validée après confirmation</div>
         </div>
 
-        <div style="margin-top:10px;"><a class="btn btn-primary wa-link" data-wa="commander" href="#">Commander</a></div>
+        <div style="margin-top: 10px;">
+          <a class="btn btn-primary wa-link" data-wa="commander" href="#">Commander maintenant</a>
+        </div>
       </div>
     </section>
 
+    <!-- LIVRAISON -->
+    <section class="section" id="livraison">
+      <div class="container">
+        <div class="section-head">
+          <h2>Livraison</h2>
+          <p class="small">Court et clair</p>
+        </div>
+
+        <div class="card ship">
+          <div class="row"><span aria-hidden="true">🕐</span> Livraison dans la journée (2h–6h)</div>
+          <div class="row"><span aria-hidden="true">⚡</span> Livraison express (30min–1h)</div>
+          <div class="row"><span aria-hidden="true">📍</span> Dakar et alentours</div>
+        </div>
+
+        <div class="mentions">
+          <div class="mention">Réponse rapide sur WhatsApp ⚡</div>
+        </div>
+
+        <div style="margin-top: 10px;">
+          <a class="btn btn-primary wa-link" data-wa="commander" href="#">Commander maintenant</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAIEMENT -->
+    <section class="section" id="paiement">
+      <div class="container">
+        <div class="section-head">
+          <h2>Paiement</h2>
+          <p class="small">Clair</p>
+        </div>
+
+        <div class="card pay">
+          <p class="pay-title">Paiement simple et rapide</p>
+          <div class="grid-3">
+            <div class="pay-item"><div class="pico" aria-hidden="true">📱</div>Wave</div>
+            <div class="pay-item"><div class="pico" aria-hidden="true">📱</div>Orange Money</div>
+            <div class="pay-item"><div class="pico" aria-hidden="true">💵</div>Espèces</div>
+          </div>
+          <p class="pay-note">Paiement simple et rapide</p>
+        </div>
+
+        <div style="margin-top: 10px;">
+          <a class="btn btn-primary wa-link" data-wa="commander" href="#">Commander maintenant</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- TARIFS -->
     <section class="section" id="tarifs">
       <div class="container">
         <div class="section-head">
           <h2>Tarifs</h2>
-          <p class="small">500F • 1000F • Dakar</p>
+          <p class="small">Visuel</p>
         </div>
 
         <div class="grid-pricing">
-          <div class="card price"><div class="price-left"><div class="tag">⚡</div><div class="price-name">Dépannage</div></div><div class="price-val">500F</div></div>
-          <div class="card price"><div class="price-left"><div class="tag">🧺</div><div class="price-name">Courses</div></div><div class="price-val">1000F</div></div>
-          <div class="card price span-2"><div class="price-left"><div class="tag">🚗</div><div class="price-name">Dakar</div></div><div class="price-val">Sur demande</div></div>
+          <div class="card price">
+            <div class="price-left">
+              <div class="tag" aria-hidden="true">⚡</div>
+              <div class="price-name">Dépannage</div>
+            </div>
+            <div class="price-val">700F</div>
+          </div>
+
+          <div class="card price">
+            <div class="price-left">
+              <div class="tag" aria-hidden="true">🧺</div>
+              <div class="price-name">Courses</div>
+            </div>
+            <div class="price-val">1200F</div>
+          </div>
+
+          <div class="card price span-2">
+            <div class="price-left">
+              <div class="tag" aria-hidden="true">🚗</div>
+              <div class="price-name">Dakar</div>
+            </div>
+            <div class="price-val">Sur demande</div>
+          </div>
         </div>
 
-        <div style="margin-top:10px;"><a class="btn btn-primary wa-link" data-wa="commander" href="#">Commander</a></div>
+        <div class="mentions fee">
+          <div class="mention">+ frais de déplacement selon distance</div>
+          <div class="mention">Délai confirmé avant paiement ⏱️</div>
+        </div>
+
+        <div style="margin-top: 10px;">
+          <a class="btn btn-primary wa-link" data-wa="commander" href="#">Commander maintenant</a>
+        </div>
       </div>
     </section>
 
+    <!-- POURQUOI -->
     <section class="section" id="why">
       <div class="container">
         <div class="section-head">
-          <h2>Pourquoi</h2>
-          <p class="small">4 points</p>
+          <h2>Pourquoi nous choisir</h2>
+          <p class="small">Simple</p>
         </div>
 
         <div class="grid-why">
-          <div class="why"><span>⚡</span>Rapide</div>
-          <div class="why"><span>🤝</span>Fiable</div>
-          <div class="why"><span>📍</span>Disponible</div>
-          <div class="why"><span>💬</span>Simple</div>
+          <div class="why"><span aria-hidden="true">⚡</span>Rapide</div>
+          <div class="why"><span aria-hidden="true">🤝</span>Fiable</div>
+          <div class="why"><span aria-hidden="true">📍</span>Disponible</div>
+          <div class="why"><span aria-hidden="true">💬</span>Simple</div>
         </div>
 
-        <div style="margin-top:10px;"><a class="btn btn-primary wa-link" data-wa="commander" href="#">Commander</a></div>
+        <div style="margin-top: 10px;">
+          <a class="btn btn-primary wa-link" data-wa="commander" href="#">Commander maintenant</a>
+        </div>
       </div>
     </section>
 
+    <!-- ZONE -->
     <section class="section" id="zone">
       <div class="container">
         <div class="section-head">
@@ -199,12 +686,17 @@
         </div>
 
         <div class="card zone">
-          <p style="font-weight:900;">👉 Dakar et alentours</p>
-          <p class="small">Basé à Mbao • déplacements selon demande</p>
+          <p style="font-weight: 900;">👉 Dakar et alentours</p>
+          <p class="small">Basé à Mbao • déplacements possibles selon demande</p>
+        </div>
+
+        <div class="mentions">
+          <div class="mention">Commande validée après confirmation</div>
         </div>
       </div>
     </section>
 
+    <!-- CONFIANCE -->
     <section class="section" id="trust">
       <div class="container">
         <div class="section-head">
@@ -216,50 +708,81 @@
           <div class="card photo">
             <div class="photo-box">
               <picture>
+                <!-- ✅ Mets tes fichiers dans /assets/ : Thierry.webp + Thierry. (ou Thierry.png) -->
                 <source srcset="assets/Thierry.png" type="image/webp" />
-                <img src="assets/Thierry.png" alt="Prestataire Dakar Courses" loading="lazy" width="607" height="900"
-                  onerror="this.style.display='none';document.getElementById('photoFallback').style.display='grid';" />
+                <img
+                  src="assets/Thierry.png"
+                  alt="Thierry — Dakar Courses"
+                  loading="lazy"
+                  width="800"
+                  height="1000"
+                  onerror="this.style.display='none';document.getElementById('photoFallback').style.display='grid';"
+                />
               </picture>
               <div id="photoFallback" class="photo-fallback">Photo indisponible</div>
             </div>
           </div>
 
           <div class="card trust-card">
-            <p style="font-weight:900;">Service sérieux et fiable</p>
-            <p class="small" style="margin-top:6px;">Réponse rapide sur WhatsApp ⚡</p>
-            <div style="margin-top:10px;"><a class="btn btn-primary wa-link" data-wa="commander" href="#">Commander</a></div>
+            <p style="font-weight: 900;">Service sérieux et fiable</p>
+            <p class="small" style="margin-top: 6px;">Réponse rapide sur WhatsApp ⚡</p>
+            <div class="mentions">
+              <div class="mention">Délai confirmé avant paiement ⏱️</div>
+            </div>
+
+            <div style="margin-top: 10px;">
+              <a class="btn btn-primary wa-link" data-wa="commander" href="#">Commander maintenant</a>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- FOOTER (dernier doute levé) -->
     <footer class="footer" id="contact">
       <div class="container">
-        <p style="font-family:Poppins,Inter,sans-serif;font-weight:900;font-size:12px;margin:0;">Dakar Courses</p>
-        <p class="small" style="margin-top:6px;">WhatsApp : <span id="wa-display"></span></p>
+        <p style="font-family: Poppins, Inter, sans-serif; font-weight: 900; font-size: 12px; margin: 0;">Dakar Courses</p>
+        <p class="small" style="margin-top: 6px;">WhatsApp : <span id="wa-display"></span></p>
 
-        <div class="card pay" style="margin-top:10px;">
-          <p class="pay-title">Paiement facile avec Wave et Orange Money</p>
-          <div class="grid-pay">
-            <div class="pay-item"><div class="pico">📱</div>Wave</div>
-            <div class="pay-item"><div class="pico">📱</div>Orange Money</div>
-            <div class="pay-item"><div class="pico">💵</div>Espèces</div>
+        <div class="card pay" style="margin-top: 10px;">
+          <p class="pay-title">Paiement simple et rapide</p>
+          <div class="grid-3">
+            <div class="pay-item"><div class="pico" aria-hidden="true">📱</div>Wave</div>
+            <div class="pay-item"><div class="pico" aria-hidden="true">📱</div>Orange Money</div>
+            <div class="pay-item"><div class="pico" aria-hidden="true">💵</div>Espèces</div>
           </div>
-          <p class="pay-note">⚡ Paiement rapide après la course</p>
-          <p class="pay-bonus">Pas besoin de vous déplacer ni de chercher de monnaie</p>
+          <p class="pay-note">Pas besoin de vous déplacer ni de chercher de monnaie</p>
         </div>
 
-        <div style="margin-top:10px;"><a class="btn btn-primary wa-link" data-wa="commander" href="#">Commander</a></div>
-        <p class="small" style="margin-top:10px;">© <span id="year"></span> Dakar Courses</p>
+        <div class="mentions">
+          <div class="mention">Délai confirmé avant paiement ⏱️</div>
+          <div class="mention">Commande validée après confirmation</div>
+          <div class="mention">Commande en 1 minute ⚡</div>
+        </div>
+
+        <div style="margin-top: 10px;">
+          <a class="btn btn-primary wa-link" data-wa="commander" href="#">Commander maintenant</a>
+        </div>
+
+        <p class="small" style="margin-top: 10px;">© <span id="year"></span> Dakar Courses</p>
       </div>
     </footer>
 
+    <!-- Floating WhatsApp (petit) -->
     <div class="wa-float" aria-label="Bouton WhatsApp flottant">
       <a class="wa-link" data-wa="commander" href="#">
         <span class="sr-only">Ouvrir WhatsApp</span>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M20.5 11.8a8.5 8.5 0 10-16.2 3.6L3 21l5.8-1.2a8.5 8.5 0 0011.7-8z" stroke="white" stroke-width="1.7" stroke-linejoin="round" />
-          <path d="M9.2 8.8c.2-.5.4-.5.6-.5h.5c.2 0 .4 0 .6.4l.7 1.7c.1.3.1.5 0 .7l-.4.5c-.1.1-.2.3-.1.5.1.2.6 1.1 1.4 1.7.9.7 1.6.9 1.9 1 .2.1.4 0 .5-.1l.6-.7c.2-.2.4-.2.6-.1l1.7.8c.3.1.4.3.4.5 0 .2-.2 1-.7 1.4-.5.4-1.2.5-1.6.4-.4-.1-1.8-.7-3.1-1.8-1.3-1.1-2.2-2.6-2.4-3-.2-.4-.6-1.3-.6-2 0-.7.3-1.1.5-1.3z" fill="white" />
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path
+            d="M20.5 11.8a8.5 8.5 0 10-16.2 3.6L3 21l5.8-1.2a8.5 8.5 0 0011.7-8z"
+            stroke="white"
+            stroke-width="1.7"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M9.2 8.8c.2-.5.4-.5.6-.5h.5c.2 0 .4 0 .6.4l.7 1.7c.1.3.1.5 0 .7l-.4.5c-.1.1-.2.3-.1.5.1.2.6 1.1 1.4 1.7.9.7 1.6.9 1.9 1 .2.1.4 0 .5-.1l.6-.7c.2-.2.4-.2.6-.1l1.7.8c.3.1.4.3.4.5 0 .2-.2 1-.7 1.4-.5.4-1.2.5-1.6.4-.4-.1-1.8-.7-3.1-1.8-1.3-1.1-2.2-2.6-2.4-3-.2-.4-.6-1.3-.6-2 0-.7.3-1.1.5-1.3z"
+            fill="white"
+          />
         </svg>
       </a>
     </div>
@@ -269,27 +792,34 @@
         brandName: "Dakar Courses",
         waPhoneE164: "221788207167",
         waDisplay: "+221 78 820 71 67",
-        messages: {
-          commander: "Bonjour, je souhaite faire une course à Dakar. Voici ma demande : ",
-          tarif: "Bonjour, je souhaite connaître le tarif exact. Détails : ",
-        },
       };
 
-      const buildWaUrl = (message) => `https://wa.me/${CONFIG.waPhoneE164}?text=${encodeURIComponent(message)}`;
+      const waMessage = [
+        "Bonjour, je souhaite faire une course.",
+        "",
+        "📍 Localisation :",
+        "🛒 Liste des articles :",
+        "💰 Budget estimé :",
+        "⚡ Type : (Normal / Express)",
+        "",
+        "Merci"
+      ].join("\n");
+
+      const buildWaUrl = () =>
+        `https://wa.me/${CONFIG.waPhoneE164}?text=${encodeURIComponent(waMessage)}`;
 
       const init = () => {
         document.getElementById("year").textContent = String(new Date().getFullYear());
         document.getElementById("wa-display").textContent = CONFIG.waDisplay;
 
-        document.querySelectorAll(".wa-link[data-wa]").forEach((a) => {
-          const key = a.getAttribute("data-wa");
-          const msg = CONFIG.messages[key] ?? CONFIG.messages.commander;
-          a.href = buildWaUrl(msg);
+        document.querySelectorAll(".wa-link").forEach((a) => {
+          a.href = buildWaUrl();
           a.target = "_blank";
           a.rel = "noopener noreferrer";
           a.setAttribute("aria-label", `Ouvrir WhatsApp — ${CONFIG.brandName}`);
         });
       };
+
       init();
     </script>
   </body>
